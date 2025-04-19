@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myappvolei/app_colors.dart';
-import 'package:myappvolei/game.dart';
+import 'package:myappvolei/mybuttonplay.dart';
+import 'package:myappvolei/mybuttonadd.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,18 +35,6 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Appcolors.background,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: Appcolors.surfaceAlternative,
-        foregroundColor: Appcolors.foreground,
-        elevation: 6,
-        shape: CircleBorder(),
-        child: const Text(
-          '+',
-          style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
 
       body: Column(
         children: [
@@ -84,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ],
           ),
-          SizedBox(height: 100),
+          SizedBox(height: 80),
           Row(
             children: [
               Container(
@@ -167,8 +156,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     style: TextStyle(
                       color: Appcolors.yellow,
                       fontFamily: 'ConcertOne',
-                      fontSize: 40.0,
-                      height: -14,
+                      fontSize: 38.0,
+                      height: -15,
                     ),
                   ),
                   SizedBox(width: 20),
@@ -278,13 +267,13 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                   ),
-                  SizedBox(width: 30),
+                  SizedBox(width: 20),
                 ],
               ),
             ],
           ),
+          const Spacer(),
           Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 'Jogo Casado',
@@ -292,54 +281,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   color: Appcolors.foreground,
                   fontFamily: 'ConcertOne',
                   fontSize: 35,
-                  height: -10,
                 ),
               ),
-
-              Transform.translate(
-                offset: Offset(
-                  0,
-                  -140,
-                ), // Valor negativo move para cima (ajuste conforme necessidade)
-                child: myButtonPlay(context),
-              ),
+              myButtonPlay(context),
+              myButtonAdd(context),
             ],
           ),
         ],
       ),
     );
   }
-}
-
-Widget myButtonPlay(BuildContext context) {
-  return SizedBox(
-    width: 250, // Defina a largura desejada para o botão
-    height: 60, // Defina a altura desejada para o botão
-    child: ElevatedButton(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const Game()),
-        );
-      },
-      style: ElevatedButton.styleFrom(
-        backgroundColor: Appcolors.surfaceAlternative,
-        foregroundColor: Appcolors.foreground,
-        side: BorderSide(color: Appcolors.foreground, width: 2),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(
-            10,
-          ), // Aplica o mesmo BorderRadius do Container
-        ),
-        padding: const EdgeInsets.symmetric(
-          vertical: 10,
-          horizontal: 80,
-        ), // Ajusta o padding interno
-      ),
-      child: const Text(
-        'Iniciar',
-        style: TextStyle(fontFamily: 'ConcertOne', fontSize: 30),
-      ),
-    ),
-  );
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:myappvolei/app_colors.dart';
 
 class Game extends StatefulWidget {
   const Game({super.key});
@@ -32,7 +33,22 @@ class _GameState extends State<Game> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Tela do Jogo (Horizontal)')),
+      appBar: AppBar(
+        backgroundColor: Appcolors.background,
+        iconTheme: const IconThemeData(
+          color: Colors.white,
+        ), // Define a cor do ícone da seta para branco
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(
+              Icons.settings,
+              color: Colors.white,
+            ), // Adiciona o ícone de configurações branco
+            onPressed: () {},
+          ),
+        ],
+      ),
+      backgroundColor: Appcolors.background,
       body: const Center(
         child: Text(
           'Esta é a tela do jogo em orientação horizontal!',
