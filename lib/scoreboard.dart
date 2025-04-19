@@ -17,11 +17,11 @@ class Scoreboard extends StatelessWidget {
           style: TextStyle(
             color: Appcolors.yellow,
             fontFamily: 'ConcertOne',
-            fontSize: 40.0,
-            height: -15,
+            fontSize: 30.0,
+            height: -20,
           ),
         ),
-        SizedBox(width: 20),
+        SizedBox(width: 15),
         Text(
           score.toString(), // Converte o int para String
           style: TextStyle(

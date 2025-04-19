@@ -74,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ],
           ),
-          SizedBox(height: 80),
+          SizedBox(height: 30),
           Row(
             children: [
               Container(
@@ -118,7 +118,6 @@ class _MyHomePageState extends State<MyHomePage> {
               SizedBox(height: 20),
             ],
           ),
-          const Spacer(),
           Column(
             children: [
               Text(
@@ -129,9 +128,15 @@ class _MyHomePageState extends State<MyHomePage> {
                   fontSize: 35,
                 ),
               ),
-              myButtonPlay(context),
-              myButtonAdd(context),
             ],
+          ),
+          myButtonPlay(context),
+          Align(
+            alignment: Alignment.bottomRight,
+            child: Padding(
+              padding: EdgeInsets.all(8),
+              child: myButtonAdd(context),
+            ),
           ),
         ],
       ),
