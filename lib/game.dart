@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:myappvolei/app_colors.dart';
+import 'package:myappvolei/mybuttonadd.dart';
+import 'package:myappvolei/movementsgame.dart';
 
 class Game extends StatefulWidget {
   const Game({super.key});
@@ -49,11 +51,86 @@ class _GameState extends State<Game> {
         ],
       ),
       backgroundColor: Appcolors.background,
-      body: const Center(
-        child: Text(
-          'Esta é a tela do jogo em orientação horizontal!',
-          style: TextStyle(fontSize: 24),
-        ),
+
+      body: Column(
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Column(
+                children: [
+                  Container(
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Appcolors.surfaceAlternative,
+                    ),
+                    child: Center(
+                      child: Text(
+                        "A",
+                        style: TextStyle(
+                          color: Appcolors.foreground,
+                          fontFamily: "Concert One",
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Text(
+                    'Ziraldos',
+                    style: TextStyle(
+                      color: Appcolors.surfaceAlternative,
+                      fontFamily: "Concert One",
+                      fontSize: 15,
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(width: 50),
+              Column(
+                children: [
+                  Container(
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Appcolors.surfaceAlternative,
+                    ),
+                    child: Center(
+                      child: Text(
+                        "B",
+                        style: TextStyle(
+                          color: Appcolors.foreground,
+                          fontFamily: "Concert One",
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Text(
+                    'Autoconvidados',
+                    style: TextStyle(
+                      color: Appcolors.surfaceAlternative,
+                      fontFamily: "Concert One",
+                      fontSize: 15,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          Movementsgame(movements: "Ace"),
+          SizedBox(height: 10),
+          Movementsgame(movements: "Ataque"),
+          SizedBox(height: 10),
+          Movementsgame(movements: "Bloqueio"),
+          SizedBox(height: 10),
+          Movementsgame(movements: "Erro"),
+        ],
       ),
     );
   }
