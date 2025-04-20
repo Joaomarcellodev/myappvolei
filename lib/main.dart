@@ -130,7 +130,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ],
           ),
-          myButtonPlay(context),
+          myButtonPlay(context, name: 'Iniciar'),
           Align(
             alignment: Alignment.bottomRight,
             child: Padding(
