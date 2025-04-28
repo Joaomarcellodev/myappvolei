@@ -1,8 +1,6 @@
-
 import 'package:flutter/material.dart';
 
 class Appcolors {
-
   static const Color background = Color.fromARGB(255, 0, 173, 195);
   static const Color foreground = Color.fromARGB(255, 247, 247, 247);
   static const Color surface = Color.fromARGB(255, 115, 207, 213);

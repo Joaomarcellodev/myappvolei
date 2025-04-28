@@ -17,22 +17,22 @@ class Scoreboard extends StatelessWidget {
           style: TextStyle(
             color: Appcolors.yellow,
             fontFamily: 'ConcertOne',
-            fontSize: 30.0,
-            height: -20,
+            fontSize: 36.0,
+            height: -13.0,
           ),
         ),
-        SizedBox(width: 15),
+        SizedBox(width: 10),
         Text(
           score.toString(), // Converte o int para String
           style: TextStyle(
             color: Appcolors.surfaceAlternative,
             fontFamily: 'ConcertOne',
-            fontSize: 90,
-            height: -6.6,
+            fontSize: 60,
+            height: -7.8,
           ),
         ),
         Transform.translate(
-          offset: Offset(0, -290),
+          offset: Offset(0, -230),
           child: RotatedBox(
             quarterTurns: 3,
             child: Text(
@@ -40,12 +40,12 @@ class Scoreboard extends StatelessWidget {
               style: TextStyle(
                 color: Appcolors.surfaceAlternative,
                 fontFamily: 'ConcertOne',
-                fontSize: 12.0,
+                fontSize: 10.0,
               ),
             ),
           ),
         ),
-        SizedBox(width: 30),
+        SizedBox(width: 20),
       ],
     );
   }

@@ -74,23 +74,17 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ],
           ),
-          SizedBox(height: 30),
           Row(
             children: [
               Container(
-                margin: EdgeInsets.only(left: 5),
+                margin: EdgeInsets.only(left: 5, top: 80),
                 decoration: BoxDecoration(
                   color: Appcolors.surface,
                   border: Border.all(color: Appcolors.foreground, width: 2),
                 ),
 
                 child: Padding(
-                  padding: EdgeInsets.only(
-                    right: 2,
-                    left: 2,
-                    top: 90,
-                    bottom: 90,
-                  ),
+                  padding: EdgeInsets.only(top: 60, bottom: 60),
                   child: RotatedBox(
                     quarterTurns: 3,
                     child: Text(
@@ -98,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       style: TextStyle(
                         color: Appcolors.foreground,
                         fontFamily: 'ConcertOne',
-                        fontSize: 60.0,
+                        fontSize: 50.0,
                       ),
                     ),
                   ),
@@ -106,38 +100,39 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ],
           ),
-          Column(
-            children: [
-              Scoreboard(nameTime: "Sicranos", score: 3),
-              SizedBox(height: 20),
-              Scoreboard(nameTime: "Autoconvidados", score: 3),
-              SizedBox(height: 20),
-              Scoreboard(nameTime: "Ziraldos", score: 4),
-              SizedBox(height: 20),
-              Scoreboard(nameTime: "Sparrings", score: 5),
-              SizedBox(height: 20),
-            ],
+
+          Expanded(
+            child: ListView(
+              padding: EdgeInsets.zero, 
+              children: [
+                Scoreboard(nameTime: "Sicranos", score: 3),
+                SizedBox(height: 8),
+                Scoreboard(nameTime: "Autoconvidados", score: 3),
+                SizedBox(height: 8),
+                Scoreboard(nameTime: "Ziraldos", score: 4),
+                SizedBox(height: 8),
+                Scoreboard(nameTime: "Sparrings", score: 5),
+              ],
+            ),
           ),
-          Column(
-            children: [
-              Text(
-                'Jogo Casado',
-                style: TextStyle(
-                  color: Appcolors.foreground,
-                  fontFamily: 'ConcertOne',
-                  fontSize: 35,
-                ),
-              ),
-            ],
+          Text(
+            'Jogo Casado',
+            style: TextStyle(
+              color: Appcolors.foreground,
+              fontFamily: 'ConcertOne',
+              fontSize: 32,
+            ),
           ),
           myButtonPlay(context, name: 'Iniciar'),
+
           Align(
             alignment: Alignment.bottomRight,
             child: Padding(
-              padding: EdgeInsets.all(8),
+              padding: EdgeInsets.only(top: 90, right: 20),
               child: myButtonAdd(context),
             ),
           ),
+          SizedBox(height: 30),
         ],
       ),
     );

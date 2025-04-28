@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:myappvolei/app_colors.dart';
 import 'package:myappvolei/mybuttonadd.dart';
 import 'package:myappvolei/mybuttonplay.dart';
+import 'package:myappvolei/overall_score.dart';
 
 class Game extends StatefulWidget {
   const Game({super.key});
@@ -119,16 +120,13 @@ class _GameState extends State<Game> {
       body: Column(
         children: [
           // Cabeçalho com times
-          Padding(
-            padding: const EdgeInsets.only(top: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _buildTeam('A', 'Ziraldos'),
-                const SizedBox(width: 70),
-                _buildTeam('B', 'Autoconvidados'),
-              ],
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _buildTeam('A', 'Ziraldos'),
+              const SizedBox(width: 70),
+              _buildTeam('B', 'Autoconvidados'),
+            ],
           ),
 
           // Corpo principal
@@ -240,7 +238,11 @@ class _GameState extends State<Game> {
                               ),
                             ),
                             const SizedBox(height: 3),
-                            myButtonPlay(context, name: 'Placar Geral'),
+                            myButtonPlay(
+                              context,
+                              name: 'Placar Geral',
+                              onPressed: () => OverallScore.show(context),
+                            ),
                           ],
                         ),
                       ),
