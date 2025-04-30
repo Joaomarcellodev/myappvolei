@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:myappvolei/app_colors.dart';
-import 'package:myappvolei/game.dart';
+import 'package:myappvolei/widgets/app_colors.dart';
+import 'package:myappvolei/pages/game.dart';
 
 class Mybuttonplay {
   final String name;
+  final Color textColor; 
 
-  const Mybuttonplay({required this.name});
+  const Mybuttonplay({
+    required this.name,
+    this.textColor = Appcolors.foreground,
+  });
 }
 
 Widget myButtonPlay(
   BuildContext context, {
   required String name,
+  Color textColor = Appcolors.foreground,
   VoidCallback? onPressed,
 }) {
   return SizedBox(
@@ -33,7 +38,11 @@ Widget myButtonPlay(
       ),
       child: Text(
         name,
-        style: const TextStyle(fontFamily: 'ConcertOne', fontSize: 28),
+        style: TextStyle(
+          fontFamily: 'ConcertOne',
+          fontSize: 28,
+          color: textColor,
+        ),
       ),
     ),
   );

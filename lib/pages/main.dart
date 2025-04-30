@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:myappvolei/app_colors.dart';
-import 'package:myappvolei/mybuttonplay.dart';
-import 'package:myappvolei/mybuttonadd.dart';
-import 'package:myappvolei/scoreboard.dart';
+import 'package:myappvolei/widgets/app_colors.dart';
+import 'package:myappvolei/widgets/my_button_play.dart';
+import 'package:myappvolei/widgets/my_button_add.dart';
+import 'package:myappvolei/widgets/score_board.dart';
 
 void main() {
   runApp(const MyApp());

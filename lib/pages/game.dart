@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:myappvolei/app_colors.dart';
-import 'package:myappvolei/mybuttonadd.dart';
-import 'package:myappvolei/mybuttonplay.dart';
-import 'package:myappvolei/overall_score.dart';
+import 'package:myappvolei/widgets/app_colors.dart';
+import 'package:myappvolei/widgets/moves.dart';
+import 'package:myappvolei/widgets/moves_reverse.dart';
+import 'package:myappvolei/widgets/my_button_play.dart';
+import 'package:myappvolei/pages/result.dart';
+import 'package:myappvolei/widgets/team_container.dart';
 
 class Game extends StatefulWidget {
   const Game({super.key});
@@ -20,87 +22,6 @@ class _GameState extends State<Game> {
       DeviceOrientation.landscapeLeft,
       DeviceOrientation.landscapeRight,
     ]);
-  }
-
-  @override
-  void dispose() {
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
-    ]);
-    super.dispose();
-  }
-
-  Widget _buildTeam(String letter, String name) {
-    return Column(
-      children: [
-        Container(
-          width: 50,
-          height: 50,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(25),
-            color: Appcolors.border,
-          ),
-          child: Center(
-            child: Text(
-              letter,
-              style: TextStyle(
-                color: Appcolors.surfaceAlternative,
-                fontFamily: 'ConcertOne',
-                fontSize: 28,
-              ),
-            ),
-          ),
-        ),
-        Text(
-          name,
-          style: TextStyle(
-            color: Appcolors.surfaceAlternative,
-            fontFamily: "ConcertOne",
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildStatRow(String label) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 10),
-      child: Row(
-        children: [
-          myButtonAdd(context),
-          const SizedBox(width: 10),
-          Text(
-            label,
-            style: TextStyle(
-              color: Appcolors.foreground,
-              fontFamily: 'ConcertOne',
-              fontSize: 30,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildActionRow(String label) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        Text(
-          label,
-          style: TextStyle(
-            color: Appcolors.foreground,
-            fontFamily: 'ConcertOne',
-            fontSize: 30,
-          ),
-        ),
-        const SizedBox(width: 10),
-        myButtonAdd(context),
-      ],
-    );
   }
 
   @override
@@ -123,9 +44,9 @@ class _GameState extends State<Game> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _buildTeam('A', 'Ziraldos'),
+              teamContainer('A', 'Ziraldos'),
               const SizedBox(width: 70),
-              _buildTeam('B', 'Autoconvidados'),
+              teamContainer('B', 'Autoconvidados'),
             ],
           ),
 
@@ -142,13 +63,13 @@ class _GameState extends State<Game> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        _buildStatRow('Ace'),
+                        moves('Ace', context),
                         const SizedBox(height: 10),
-                        _buildStatRow('Ataque'),
+                        moves('Ataque', context),
                         const SizedBox(height: 10),
-                        _buildStatRow('Bloqueio'),
+                        moves('Bloqueio', context),
                         const SizedBox(height: 10),
-                        _buildStatRow('Erro'),
+                        moves('Erro', context),
                       ],
                     ),
                   ),
@@ -179,8 +100,7 @@ class _GameState extends State<Game> {
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Image.asset('image/ball.png', height: 60),
-                                    const SizedBox(height: 10),
+                                    Image.asset('image/ball.png', height: 70),
                                     Text(
                                       '12',
                                       style: TextStyle(
@@ -241,7 +161,7 @@ class _GameState extends State<Game> {
                             myButtonPlay(
                               context,
                               name: 'Placar Geral',
-                              onPressed: () => OverallScore.show(context),
+                              onPressed: () => Result.show(context),
                             ),
                           ],
                         ),
@@ -258,13 +178,13 @@ class _GameState extends State<Game> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        _buildActionRow('Ace'),
+                        movesReverse('Ace', context),
                         const SizedBox(height: 10),
-                        _buildActionRow('Ataque'),
+                        movesReverse('Ataque', context),
                         const SizedBox(height: 10),
-                        _buildActionRow('Bloqueio'),
+                        movesReverse('Bloqueio', context),
                         const SizedBox(height: 10),
-                        _buildActionRow('Erro'),
+                        movesReverse('Erro', context),
                       ],
                     ),
                   ),

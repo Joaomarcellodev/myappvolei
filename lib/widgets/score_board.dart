@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myappvolei/app_colors.dart';
+import 'package:myappvolei/widgets/app_colors.dart';
 
 class Scoreboard extends StatelessWidget {
   final String nameTime;
@@ -23,7 +23,7 @@ class Scoreboard extends StatelessWidget {
         ),
         SizedBox(width: 10),
         Text(
-          score.toString(), // Converte o int para String
+          score.toString(), 
           style: TextStyle(
             color: Appcolors.surfaceAlternative,
             fontFamily: 'ConcertOne',

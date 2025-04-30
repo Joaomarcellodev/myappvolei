@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:myappvolei/app_colors.dart';
-import 'package:myappvolei/mybuttonplay.dart';
+import 'package:myappvolei/pages/overrall_score.dart';
+import 'package:myappvolei/widgets/app_colors.dart';
+import 'package:myappvolei/widgets/my_button_play.dart';
 
-class OverallScore {
+class Result {
   static void show(BuildContext context) {
     showDialog(
       context: context,
@@ -66,12 +67,28 @@ class OverallScore {
 
                   SizedBox(height: 70),
 
-                  // Botões de ação
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      myButtonPlay(context, name: 'Terminar'),
-                      myButtonPlay(context, name: 'Novo Set'),
+                      myButtonPlay(
+                        context,
+                        name: 'Terminar',
+                        onPressed: () {
+                          Navigator.of(context).pop(); // Fecha o diálogo
+                          Navigator.push(
+                            // Navega para OverrallScore como uma nova tela
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => OverrallScore(),
+                            ),
+                          );
+                        },
+                      ),
+                      myButtonPlay(
+                        context,
+                        name: 'Novo Set',
+                        textColor: Appcolors.yellow,
+                      ),
                     ],
                   ),
                 ],
