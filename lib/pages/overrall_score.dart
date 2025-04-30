@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:myappvolei/widgets/app_colors.dart';
+import 'package:myappvolei/widgets/score_item.dart';
+import 'package:myappvolei/widgets/summary_item.dart';
+import 'package:myappvolei/widgets/team_container.dart';
+import 'package:myappvolei/widgets/time_baseboard.dart';
 
 class OverrallScore extends StatefulWidget {
   const OverrallScore({super.key});
@@ -38,7 +42,7 @@ class _OverrallScoreState extends State<OverrallScore> {
           style: TextStyle(
             color: Appcolors.surfaceAlternative,
             fontFamily: "ConcertOne",
-            fontSize: 36,
+            fontSize: 32,
           ),
         ),
         backgroundColor: Appcolors.background,
@@ -53,196 +57,159 @@ class _OverrallScoreState extends State<OverrallScore> {
       backgroundColor: Appcolors.background,
       body: Column(
         children: [
-          // Corpo principal
           Expanded(
-            child: Row(
-              children: [
-                // Coluna esquerda (ícones centralizados)
-                Expanded(
-                  flex: 1,
-                  child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 8.0,
+                ), // Reduzi o padding horizontal
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Icon(
-                          Icons.bar_chart,
-                          color: Appcolors.foreground,
-                          size: 40,
+                        // Coluna esquerda (ícones)
+                        Transform.translate(
+                          offset: const Offset(10, 20),
+                          child: SizedBox(
+                            width: 60, // Reduzi a largura
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: List.generate(
+                                4,
+                                (index) => Padding(
+                                  padding: const EdgeInsets.only(bottom: 5),
+                                  child: Icon(
+                                    Icons.bar_chart,
+                                    color: Appcolors.foreground,
+                                    size: 26,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
-                        SizedBox(height: 20),
-                        Icon(
-                          Icons.bar_chart,
-                          color: Appcolors.foreground,
-                          size: 40,
-                        ),
-                        SizedBox(height: 20),
-                        Icon(
-                          Icons.bar_chart,
-                          color: Appcolors.foreground,
-                          size: 40,
-                        ),
-                        SizedBox(height: 20),
-                        Icon(
-                          Icons.bar_chart,
-                          color: Appcolors.foreground,
-                          size: 40,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
 
-                // Coluna central (placar laranja)
-                Expanded(
-                  flex: 2,
-                  child: Center(
-                    child: Container(
-                      width: 400,
-                      height: 180,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Appcolors.foreground,
-                          width: 3,
-                        ),
-                        color: Colors.deepOrange,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Column(
+                        // Coluna central (placares)
+                        Expanded(
+                          child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const SizedBox(height: 10),
-                              Text(
-                                '12',
-                                style: TextStyle(
-                                  color: Appcolors.border,
-                                  fontFamily: 'ConcertOne',
-                                  fontSize: 70,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                              const SizedBox(height: 20),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  teamContainer(
+                                    team: 'A',
+                                    items: [
+                                      scoreItem(
+                                        'Ziraldos',
+                                        '25',
+                                        isTeamB: false,
+                                      ),
+                                      scoreItem(
+                                        'Ziraldos',
+                                        '25',
+                                        isTeamB: false,
+                                      ),
+                                      scoreItem(
+                                        'Ziraldos',
+                                        '10',
+                                        isYellow: true,
+                                        isTeamB: false,
+                                      ),
+                                      scoreItem(
+                                        'Sparrings',
+                                        '10',
+                                        isTeamB: false,
+                                      ),
+                                    ],
+                                  ),
+
+                                  teamContainer(
+                                    team: 'B',
+                                    items: [
+                                      scoreItem(
+                                        '10',
+                                        'Sparrings',
+                                        isYellow: true,
+                                        isTeamB: true,
+                                      ),
+                                      scoreItem(
+                                        '10',
+                                        'Sicranos',
+                                        isYellow: true,
+                                        isTeamB: true,
+                                      ),
+                                      scoreItem(
+                                        '25',
+                                        'Autoconvidados',
+                                        isTeamB: true,
+                                      ),
+                                      scoreItem(
+                                        '10',
+                                        'Autoconvidados',
+                                        isYellow: true,
+                                        isTeamB: true,
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
                             ],
                           ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const SizedBox(height: 70),
-                              Text(
-                                '22',
-                                style: TextStyle(
-                                  color: Appcolors.border,
-                                  fontFamily: 'ConcertOne',
-                                  fontSize: 70,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+                        ),
 
-                // Coluna direita (tempos centralizados)
-                Expanded(
-                  flex: 1,
-                  child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          '0:24.90',
-                          style: TextStyle(
-                            color: Appcolors.foreground,
-                            fontSize: 24,
-                            fontFamily: 'ConcertOne',
-                          ),
-                        ),
-                        SizedBox(height: 2),
-                        Text(
-                          '0:14.23',
-                          style: TextStyle(
-                            color: Appcolors.foreground,
-                            fontSize: 24,
-                            fontFamily: 'ConcertOne',
-                          ),
-                        ),
-                        SizedBox(height: 2),
-                        Text(
-                          '0:35.04',
-                          style: TextStyle(
-                            color: Appcolors.foreground,
-                            fontSize: 24,
-                            fontFamily: 'ConcertOne',
-                          ),
-                        ),
-                        SizedBox(height: 2),
-                        Text(
-                          '0:11.29',
-                          style: TextStyle(
-                            color: Appcolors.foreground,
-                            fontSize: 24,
-                            fontFamily: 'ConcertOne',
+                        // Coluna direita (tempos)
+                        Transform.translate(
+                          offset: const Offset(0, 4),
+                          child: SizedBox(
+                            width: 100, // Reduzi a largura
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const SizedBox(
+                                  height: 20,
+                                ), // Reduzi o espaçamento
+                                timeBaseboard('0:24.90'),
+                                timeBaseboard('0:14.23'),
+                                timeBaseboard('0:35.04'),
+                                timeBaseboard('0:11.29'),
+                              ],
+                            ),
                           ),
                         ),
                       ],
                     ),
-                  ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
 
-          // Linha inferior (informações adicionais)
+          // Rodapé
           Container(
-            padding: EdgeInsets.all(16),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "Ziraldos",
-                  style: TextStyle(color: Appcolors.foreground, fontSize: 18),
-                ),
-                SizedBox(width: 4),
-                Text(
-                  '3',
-                  style: TextStyle(
-                    color: Appcolors.foreground,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(width: 4),
-                Text(
-                  "Sicranos",
-                  style: TextStyle(color: Appcolors.foreground, fontSize: 18),
-                ),
-                SizedBox(width: 4),
-                Text(
-                  '1',
-                  style: TextStyle(
-                    color: Appcolors.foreground,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(width: 4),
-                Text(
-                  "Autoconvidados",
-                  style: TextStyle(color: Appcolors.foreground, fontSize: 18),
-                ),
-                SizedBox(width: 4),
-                Text(
-                  '8',
-                  style: TextStyle(
-                    color: Appcolors.foreground,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            margin: const EdgeInsets.only(bottom: 10),
+            decoration: BoxDecoration(
+              color: Appcolors.surface,
+              border: Border.all(color: Appcolors.foreground, width: 2),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 8,
+              ), // Adicionei padding interno
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  summaryItem("Ziraldos: ", '3'),
+                  summaryItem("Sieranos: ", '1'),
+                  summaryItem("Autoconvidados: ", '8'),
+                  summaryItem("Sparrings: "),
+                ],
+              ),
             ),
           ),
         ],

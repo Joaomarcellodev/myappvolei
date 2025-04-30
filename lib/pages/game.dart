@@ -5,7 +5,7 @@ import 'package:myappvolei/widgets/moves.dart';
 import 'package:myappvolei/widgets/moves_reverse.dart';
 import 'package:myappvolei/widgets/my_button_play.dart';
 import 'package:myappvolei/pages/result.dart';
-import 'package:myappvolei/widgets/team_container.dart';
+import 'package:myappvolei/widgets/team_container_avatar.dart';
 
 class Game extends StatefulWidget {
   const Game({super.key});
@@ -44,9 +44,9 @@ class _GameState extends State<Game> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              teamContainer('A', 'Ziraldos'),
+              teamContainerAvatar('A', 'Ziraldos'),
               const SizedBox(width: 70),
-              teamContainer('B', 'Autoconvidados'),
+              teamContainerAvatar('B', 'Autoconvidados'),
             ],
           ),
 

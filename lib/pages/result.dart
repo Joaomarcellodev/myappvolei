@@ -76,7 +76,7 @@ class Result {
                         onPressed: () {
                           Navigator.of(context).pop(); // Fecha o diálogo
                           Navigator.push(
-                            // Navega para OverrallScore como uma nova tela
+                            
                             context,
                             MaterialPageRoute(
                               builder: (context) => OverrallScore(),
