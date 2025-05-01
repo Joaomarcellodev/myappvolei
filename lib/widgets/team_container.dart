@@ -14,7 +14,7 @@ Widget teamContainer({
       ),
       decoration: BoxDecoration(
         border: Border.all(color: Appcolors.foreground, width: 3),
-        color: Colors.deepOrange,
+        color: const Color.fromRGBO(255, 87, 34, 1),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
